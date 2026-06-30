@@ -152,10 +152,10 @@ MonoBehaviour:
   basedata: {fileID: 0}
   currentHP: 0
   currentSlots: 0
-  eqquipedCards:
-  - {fileID: 11400000, guid: ba5748ba3ef9ade4d8b1473d3906ccdf, type: 2}
-  - {fileID: 11400000, guid: 605d67b4006ca8b4ca2ba5d01e779344, type: 2}
-  - {fileID: 11400000, guid: 605d67b4006ca8b4ca2ba5d01e779344, type: 2}
+  equippedCards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!212 &144972429
@@ -226,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 144972427}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.08, y: -0.62, z: 0}
+  m_LocalPosition: {x: -6.81, y: -3.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -402,10 +402,10 @@ MonoBehaviour:
   basedata: {fileID: 0}
   currentHP: 0
   currentSlots: 0
-  eqquipedCards:
-  - {fileID: 11400000, guid: 0c0db92784cb029499b4953cc563e84a, type: 2}
-  - {fileID: 11400000, guid: 0c0db92784cb029499b4953cc563e84a, type: 2}
-  - {fileID: 11400000, guid: edbec559970ec3e42be3967f9293210e, type: 2}
+  equippedCards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!212 &961179700
@@ -476,7 +476,7 @@ Transform:
   m_GameObject: {fileID: 961179698}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.43, y: -0.59, z: 0}
+  m_LocalPosition: {x: -6.61, y: 2.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -515,10 +515,10 @@ MonoBehaviour:
   basedata: {fileID: 11400000, guid: 2066d5840155307489d3d25e90489dbb, type: 2}
   currentHP: 0
   currentSlots: 0
-  eqquipedCards:
-  - {fileID: 11400000, guid: 86c0b158375387c4d9ebeb69784a3cfc, type: 2}
-  - {fileID: 11400000, guid: 605d67b4006ca8b4ca2ba5d01e779344, type: 2}
-  - {fileID: 11400000, guid: 605d67b4006ca8b4ca2ba5d01e779344, type: 2}
+  equippedCards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!212 &1217862023
@@ -589,7 +589,7 @@ Transform:
   m_GameObject: {fileID: 1217862021}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8, y: -0.34, z: 0}
+  m_LocalPosition: {x: -6.88, y: -0.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

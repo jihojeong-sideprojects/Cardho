@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Lucky Attack
   m_EditorClassIdentifier: Assembly-CSharp::Cardho.card
   cardName: Lucky Attack
-  cardType: 0
-  damageType: 0
-  damangeMin: 0
-  damageMax: 12
+  rarity: 0
+  primeStat: 0
   turnCycle: 3
-  level: 0
+  effects: []

@@ -9,22 +9,10 @@ namespace Cardho
     {
         public string cardName;
         public Rarity rarity;
-        public Type cardType;
-        public DamageType damageType;
-        public int damangeMin;
-        public int damageMax;
+        public PrimeStat primeStat;
+        public Attack attack;
         public int turnCycle;
-        public CardEffect[] effects;
-
-        
-        public enum DamageType
-        {
-            Physical,
-            Magic,
-            True,
-            Duration
-        }
-        
+        public CardEffect[] effects;           
     }
    
 }

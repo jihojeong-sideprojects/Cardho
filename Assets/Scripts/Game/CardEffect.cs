@@ -10,11 +10,4 @@ public class CardEffect : ScriptableObject
     public Effect effect;
 }
 
-[System.Serializable] 
-public struct Effect
-{
-    public EffectType effecttype;
-    public int effectduration;
-    public int effectamount;
-}
 }

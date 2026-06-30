@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cardho.card
   cardName: Fast Attack
   rarity: 0
-  cardType: 1
-  damageType: 0
-  damangeMin: 3
-  damageMax: 3
+  primeStat: 0
   turnCycle: 1
-  Effects: []
+  effects: []
