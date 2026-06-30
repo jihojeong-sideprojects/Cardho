@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cardho.Card
   cardName: 
   rarity: 0
-  cardType: 2
-  damageType: 1
-  damangeMin: 5
-  damageMax: 5
+  primeStat: 2
   turnCycle: 3
   effects: []

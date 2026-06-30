@@ -14,10 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cardho.card
   cardName: Heal
   rarity: 0
-  cardType: 2
-  damageType: 0
-  damangeMin: 0
-  damageMax: 0
+  primeStat: 2
   turnCycle: 0
   effects:
   - {fileID: 11400000, guid: b4e8c96f15cc6d444bce41608d19af14, type: 2}
