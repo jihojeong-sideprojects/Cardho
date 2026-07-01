@@ -11,6 +11,7 @@ public class BattleController : MonoBehaviour
 
     [Header("Current Round/State")]
     public int currentTurn = 1;
+    private List<BattleUnit> turnOrder;
     public BattleState currentState;
 
     private void Start()
