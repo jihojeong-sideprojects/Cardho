@@ -26,18 +26,19 @@ public class PlayerData : Singleton<PlayerData>
             return false;
         }
         heroInventory.Add(hero);
-        Debug.Log($"[AddHero] {hero.basedata.heroName} added to inventory");
+        hero.transform.SetParent(transform);
+        Debug.Log($"[PlayerData][AddHero] {hero.basedata.heroName} added to inventory");
         return true;
     }
     public bool AddCard(Card card)
     {
         if (card == null)
         {
-            Debug.LogWarning("[AddCard] Card is null");
+            Debug.LogWarning("[PlayerData][AddCard] Card is null");
             return false;
         }
         cardInventory.Add(card);
-        Debug.Log($"[AddCard] {card.cardName} added to inventory");
+        Debug.Log($"[PlayerData][AddCard] {card.cardName} added to inventory");
         return true;
     }
     public bool RemoveHero(Hero hero)

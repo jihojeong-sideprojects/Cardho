@@ -104,12 +104,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d801119bdc39bd49b1bfc63bd2c5a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hero
-  basedata: {fileID: 0}
+  basedata: {fileID: 11400000, guid: fbbfde75e4985c242be05677341708ca, type: 2}
   currentHP: 0
   currentSlots: 0
-  eqquipedCards:
-  - {fileID: 11400000, guid: ba5748ba3ef9ade4d8b1473d3906ccdf, type: 2}
-  - {fileID: 11400000, guid: 605d67b4006ca8b4ca2ba5d01e779344, type: 2}
-  - {fileID: 11400000, guid: 605d67b4006ca8b4ca2ba5d01e779344, type: 2}
+  equippedCards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
