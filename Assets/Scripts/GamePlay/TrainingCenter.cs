@@ -8,18 +8,26 @@ public class TrainingCenter : MonoBehaviour
     [Header("Hero Pool")]
     [SerializeField] private List<Hero> heroOfferPool = new();
 
-    [Header("Current Sale")]
+    [Header("Current HeroSale")]
     [SerializeField] private List<Hero> heroesOnSale = new();
     [SerializeField] private int trainingCenterLevel = 1;
     private int MaxHeroesOnSale => trainingCenterLevel + 2;
     public IReadOnlyList<Hero> HeroesOnSale => heroesOnSale;
-    
+
+    [Header("Current CardSale")]
+    [SerializeField] private List<CardPoolEntry> cardOfferPool = new();
+    [SerializeField] private List<Card> cardsOnSale = new();
+    public IReadOnlyList<Card> CardsOnSale => cardsOnSale;
+    private int MaxCardsOnSale => trainingCenterLevel*2 + 1;
+
 
     public void Start()
     {
         // Initialize the training center with some heroes for sale
         PopulateHeroesForSale();
+        SetCardsForSale();
     }
+#region HeroSale
     public void PopulateHeroesForSale()
     {
         ClearHeroesOnSale();
@@ -36,6 +44,7 @@ public class TrainingCenter : MonoBehaviour
             heroesOnSale.Add(newHero);
         }
     }
+         
     private Hero GetRandomHeroPrefab()
     {
         if (heroOfferPool == null || heroOfferPool.Count == 0)
@@ -67,11 +76,93 @@ public class TrainingCenter : MonoBehaviour
         return;
         }
         heroesOnSale.Remove(hero);
-        PlayerData.Instance.AddHero(hero);
         Debug.Log($"[TrainingCenter][HireHero] {hero.basedata.heroName} hired.");
     }
+#endregion
+#region Cardsale
+    public void SetCardsForSale()
+    {
+        ClearCardsOnSale();
 
-    #region helper methods
+        for (int i = 0; i < MaxCardsOnSale; i++)
+        {
+            Card card = GetRandomCard();
+
+            if (card == null)
+            {
+                return;
+            }
+
+            cardsOnSale.Add(card);
+            Debug.Log($"[TrainingCenter][SetCardsForSale] Card {card.name} added to sale.");
+        }
+    }
+    private Card GetRandomCard()
+    {
+        int totalWeight = 0;
+
+        foreach (CardPoolEntry entry in cardOfferPool)
+        {
+            if (entry.Card == null) continue;
+            if (entry.unlockLevel > trainingCenterLevel) continue;
+            if (entry.weight <= 0) continue;
+
+            totalWeight += entry.weight;
+        }
+
+        if (totalWeight <= 0)
+        {
+            Debug.LogWarning("[TrainingCenter][GetRandomCard] No valid cards in pool.");
+            return null;
+        }
+
+        int roll = Random.Range(0, totalWeight);
+
+        foreach (CardPoolEntry entry in cardOfferPool)
+        {
+            if (entry.Card == null) continue;
+            if (entry.unlockLevel > trainingCenterLevel) continue;
+            if (entry.weight <= 0) continue;
+
+            roll -= entry.weight;
+
+            if (roll < 0)
+            {
+                return entry.Card;
+            }
+        }
+
+        return null;
+    }
+    
+    public void BuyCard(Card card)
+    {
+        if (card == null)
+        {
+            Debug.LogWarning("[TrainingCenter][BuyCard] Card is null.");
+            return;
+        }
+
+        if (!cardsOnSale.Contains(card))
+        {
+            Debug.LogWarning("[TrainingCenter][BuyCard] Card is not on sale.");
+            return;
+        }
+
+        if (!PlayerData.Instance.AddCard(card))
+        {
+            Debug.LogWarning($"[TrainingCenter][BuyCard] Failed to add {card.name}.");
+            return;
+        }
+
+        cardsOnSale.Remove(card);
+
+        Debug.Log($"[TrainingCenter][BuyCard] {card.name} bought.");
+    }
+#endregion
+        
+
+#region helper methods
     private void ClearHeroesOnSale()
     {
         foreach (Hero hero in heroesOnSale)
@@ -82,44 +173,16 @@ public class TrainingCenter : MonoBehaviour
 
         heroesOnSale.Clear();
     }
-    #endregion
+    private void ClearCardsOnSale()
+    {
+        cardsOnSale.Clear();
+    }
+#endregion
     
-    #region Debugging
-    [ContextMenu("Debug Print Heroes On Sale")]
-    private void DebugPrintHeroesOnSale()
-    {
-        Debug.Log($"[TrainingCenter] Heroes on sale: {heroesOnSale.Count}");
-
-        for (int i = 0; i < heroesOnSale.Count; i++)
-        {
-            Hero hero = heroesOnSale[i];
-
-            if (hero == null)
-            {
-                Debug.Log($"[TrainingCenter] Slot {i}: NULL");
-                continue;
-            }
-
-            Debug.Log($"[TrainingCenter] Slot {i}: {hero.basedata.heroName}");
-        }
-    }
-
-    [ContextMenu("Debug Hire First Hero")]
-    private void DebugHireFirstHero()
-    {
-        if (heroesOnSale.Count == 0)
-        {
-            Debug.LogWarning("[TrainingCenter] No heroes on sale.");
-            return;
-        }
-
-        HireHero(heroesOnSale[0]);
-
-        Debug.Log($"[TrainingCenter] Player hero inventory count: {PlayerData.Instance.HeroInventory.Count}");
-    }
-
+#region Debugging
     private void Update()
     {
+        if (Keyboard.current == null) return;
         if (Keyboard.current.hKey.wasPressedThisFrame)
         {
             if (heroesOnSale.Count > 0)
@@ -131,6 +194,18 @@ public class TrainingCenter : MonoBehaviour
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             PopulateHeroesForSale();
+        }
+
+        if (Keyboard.current.cKey.wasPressedThisFrame)
+        {
+            SetCardsForSale();
+        }
+        if (Keyboard.current.bKey.wasPressedThisFrame)
+        {
+            if (cardsOnSale.Count > 0)
+            {
+                BuyCard(cardsOnSale[0]);
+            }
         }
     }
     #endregion

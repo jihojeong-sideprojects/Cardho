@@ -74,4 +74,12 @@ public enum EnemyActionType
         Lose
         
     }
+    [System.Serializable]
+    public struct CardPoolEntry
+    {
+        public Card Card;
+        public int weight;
+        public int unlockLevel;
+
+    }
 }
